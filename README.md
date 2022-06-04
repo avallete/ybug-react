@@ -1,6 +1,6 @@
 # Ybug-react
 
-A simple implemetation of ybug.io widget to easily integrate with React applications.
+A simple wrapper of ybug.io widget to easily integrate with React applications.
 
 ## Install
 

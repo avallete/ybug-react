@@ -1,7 +1,7 @@
 {
   "name": "ybug-react",
-  "version": "1.0.1",
-  "description": "Module to make ybug.io scripts easily usable in React project",
+  "version": "1.0.2",
+  "description": "Wrapper to make ybug.io scripts easily usable in React project",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
   "scripts": {
