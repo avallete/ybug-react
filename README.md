@@ -20,7 +20,9 @@ Simply wrap your app within the provided `YbugProvider` component
 
 Then in the rest of the app lifecycle, you can interact with the ybug instance by using the `useYbugApi` hook
 
-### For autofilling the Ybug forms with user infos
+## Examples
+
+### Autofilling the Ybug forms with user infos
 
 ```tsx
 import {useYbugApi} from 'ybug-react';
@@ -33,7 +35,6 @@ function useUserConnection(props: {userId: string}) {
     React.useEffect(() => {
         if (currentUser && YbugContext.Ybug) {
             YbugContext.init({
-                close_countdown: 3,
                 feedback: {
                     // Autofill feedback forms with user email and name
                     email: currentUser.contact?.email ?? "",
@@ -44,11 +45,7 @@ function useUserConnection(props: {userId: string}) {
                 // Add custom user infos
                 user: {
                     email: currentUser.contact?.email ?? "",
-                    id: currentUser.id,
-                    name: currentUser.full_name ?? "",
-                    org_id: currentUser.org.id,
-                    org_name: currentUser.org.name,
-                    phone: currentUser.contact?.phone ?? "",
+                    ...
                 },
             });
         }
@@ -56,13 +53,13 @@ function useUserConnection(props: {userId: string}) {
 }
 ```
 
-### For programatically trigger ybug report pop-up
+### Programatically trigger ybug report pop-up
 
 ```tsx
 import * as React from "react";
 import { useYbugApi } from "~/config/ybug/YbugContext";
 
-const useError = () => {
+function ErrorPage() {
   const YbugContext = useYbugApi();
   const YbugApi = YbugContext?.Ybug;
 
@@ -72,33 +69,21 @@ const useError = () => {
     }
   };
 
-  return {
-    actions: {
-      openYbugReport,
-    },
-    state: {
-      isYbugSetup: !!YbugApi,
-    },
-    t,
-  };
-};
-
-function ErrorPage() {
-  const { actions, state, t } = useError();
-
   return (
     <div>
         <span>
             An error happened. Please contact our team
         </span>
-        {state.isYbugSetup && (
-            <button onClick={actions.openYbugReport}>
-                Tell us more
-            </button>
-        )}
+        <button onClick={actions.openYbugReport}>
+            Tell us more
+        </button>
     </div>
   );
 }
 
 export { ErrorPage };
 ```
+
+## Demo
+
+[![Edit ybug-react-usage-demo](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/s/pensive-breeze-7boxt8?fontsize=14&hidenavigation=1&theme=dark)
