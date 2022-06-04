@@ -32,7 +32,6 @@ function YbugProvider({ ybugId, url, children, settings }: YbugProviderProps): J
     // @ts-expect-error will not be defined in window
     window.ybug_settings = {
       ...settings,
-      hide_launcher: true,
       id: ybugId,
       onload: () => {
         // @ts-expect-error will not be defined in window

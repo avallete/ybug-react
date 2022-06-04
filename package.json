@@ -1,13 +1,13 @@
 {
   "name": "ybug-react",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Module to make ybug.io scripts easily usable in React project",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
   "scripts": {
     "build": "tsc",
     "format": "prettier --write \"src/**/*.(js|ts|tsx)\"",
-    "lint": "eslint src --ext .js,.ts,.tsx",
+    "lint": "eslint src --ext .js,.ts,.tsxn",
     "lint:fix": "eslint src --fix --ext .js,.ts,.tsx",
     "test": "jest --config jest.config.js",
     "prepare": "npm run build",
