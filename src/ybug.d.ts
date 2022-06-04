@@ -5,11 +5,10 @@ type SetUserType = {
   phone?: string | null | undefined;
 } & { [key: string]: string | null | undefined };
 
-
 type YbugApi = {
   boot: () => void;
-  show: (opt?: "launcher") => void;
-  open: (opt?: "annotate" | "feedback") => void;
+  show: (opt?: 'launcher') => void;
+  open: (opt?: 'annotate' | 'feedback') => void;
   destroy: () => void;
   setUser: (infos: SetUserType) => void;
   close: () => void;
@@ -26,14 +25,9 @@ type YbugSettings = {
   user?: SetUserType;
   anonymize_elements?: string;
   language_override?: string;
-  launcher_position?:
-    | "bottom-left"
-    | "bottom-right"
-    | "left-middle"
-    | "right-middle"
-    | "top-middle";
-  widget_position?: "center" | "left" | "right";
-  skip_to?: "feedback";
+  launcher_position?: 'bottom-left' | 'bottom-right' | 'left-middle' | 'right-middle' | 'top-middle';
+  widget_position?: 'center' | 'left' | 'right';
+  skip_to?: 'feedback';
   hide_launcher?: boolean;
   console_log?: boolean;
   rating?: boolean; // Rating is disabled by default

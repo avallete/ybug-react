@@ -1,11 +1,11 @@
-import * as React from "react";
-import type {YbugApi, SetUserType, YbugSettings } from "./ybug";
+import * as React from 'react';
+import type { YbugApi, SetUserType, YbugSettings } from './ybug';
 
 type YbugContextType = {
   Ybug: YbugApi | null;
   init: (settings: Partial<YbugSettings>) => void;
 };
-  
+
 type YbugProviderProps = {
   ybugId: string;
   /*
@@ -41,7 +41,7 @@ function YbugProvider({ ybugId, url, children, settings }: YbugProviderProps): J
         settings?.onload?.();
       },
     };
-    const script = document.createElement("script");
+    const script = document.createElement('script');
     script.defer = true;
     script.src = url ?? YBUG_DEFAULT_SCRIPT_URL;
     document.head.appendChild(script);
@@ -54,7 +54,7 @@ function YbugProvider({ ybugId, url, children, settings }: YbugProviderProps): J
     };
   }, []);
 
-  const initYbug: YbugContextType["init"] = (settings) => {
+  const initYbug: YbugContextType['init'] = (settings) => {
     // @ts-expect-error will not be defined in window
     window.ybug_settings = {
       ...settings,
@@ -72,11 +72,7 @@ function YbugProvider({ ybugId, url, children, settings }: YbugProviderProps): J
     }
   };
 
-  return (
-    <YbugContext.Provider value={{ Ybug: ybugApi, init: initYbug }}>
-      {children}
-    </YbugContext.Provider>
-  );
+  return <YbugContext.Provider value={{ Ybug: ybugApi, init: initYbug }}>{children}</YbugContext.Provider>;
 }
 
 export type { YbugApi, YbugSettings, SetUserType, YbugContextType, YbugProviderProps };
