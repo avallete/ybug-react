@@ -87,3 +87,5 @@ export { ErrorPage };
 ## Demo
 
 [![Edit ybug-react-usage-demo](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/s/pensive-breeze-7boxt8?fontsize=14&hidenavigation=1&theme=dark)
+
+For more info visit [https://ybug.io](https://ybug.io/docs/installation)
