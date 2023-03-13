@@ -43,6 +43,9 @@ function YbugProvider({ ybugId, url, children, settings }: YbugProviderProps): J
     const script = document.createElement('script');
     script.defer = true;
     script.src = url ?? YBUG_DEFAULT_SCRIPT_URL;
+    if (settings?.nonce) {
+      script.nonce = settings.nonce;
+    }
     document.head.appendChild(script);
 
     return () => {

@@ -50,6 +50,7 @@ type YbugSettings = {
   nps_required?: boolean;
   close_countdown?: number;
   shortcut?: boolean;
+  nonce?: string; // CSP nonce
   onload: () => unknown;
   onopen: () => unknown;
   onbeforesend: () => unknown;
