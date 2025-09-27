@@ -12,10 +12,10 @@ describe('Issue fix validation', () => {
       },
       language_override: "currentLanguage || 'en'",
       translate: {
-        "launcherButton.title": "Custom Title"
-      }
+        'launcherButton.title': 'Custom Title',
+      },
     };
-    
+
     expect(settings.translate?.['launcherButton.title']).toBe('Custom Title');
     expect(settings.feedback?.email).toBe("userData?.email || ''");
     expect(settings.feedback?.name).toBe("userData?.name || ''");

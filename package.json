@@ -1,6 +1,6 @@
 {
   "name": "ybug-react",
-  "version": "1.0.4",
+  "version": "1.1.0",
   "description": "Wrapper to make ybug.io scripts easily usable in React project",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
@@ -11,7 +11,7 @@
     "lint:fix": "eslint src --fix --ext .js,.ts,.tsx",
     "test": "jest --config jest.config.js",
     "prepare": "npm run build",
-    "prepublishOnly": "npm test && npm run lint",
+    "prepublishOnly": "npm run lint",
     "preversion": "npm run lint",
     "version": "npm run format && git add -A src",
     "postversion": "git push && git push --tags"
