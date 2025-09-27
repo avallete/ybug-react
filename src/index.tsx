@@ -1,5 +1,80 @@
 import * as React from 'react';
 
+type YbugTranslationKey =
+  | "launcherButton.Title"
+  | "feedbackTypeForm.Heading"
+  | "feedbackTypeForm.Subheading"
+  | "feedbackTypeForm.ButtonSpecific"
+  | "feedbackTypeForm.ButtonGeneral"
+  | "feedbackForm.Heading"
+  | "feedbackForm.RatingLabel"
+  | "feedbackForm.TextLabel"
+  | "feedbackForm.TextPlaceholder"
+  | "feedbackForm.TitleLabel"
+  | "feedbackForm.TitlePlaceholder"
+  | "feedbackForm.EmailLabel"
+  | "feedbackForm.EmailPlaceholder"
+  | "feedbackForm.EmailError"
+  | "feedbackForm.NameLabel"
+  | "feedbackForm.PriorityLabel"
+  | "feedbackForm.TypeLabel"
+  | "feedbackForm.Types.1"
+  | "feedbackForm.Types.2"
+  | "feedbackForm.Types.3"
+  | "feedbackForm.Types.4"
+  | "feedbackForm.PhoneLabel"
+  | "feedbackForm.PhoneError"
+  | "feedbackForm.NpsLabel"
+  | "feedbackForm.Nps.Unlikely"
+  | "feedbackForm.Nps.Likely"
+  | "feedbackForm.AssigneeLabel"
+  | "feedbackForm.ButtonSubmit"
+  | "feedbackForm.ButtonCancel"
+  | "feedbackForm.RequiredError"
+  | "feedbackForm.OptionalText"
+  | "feedbackForm.AddScreenshot"
+  | "feedbackForm.EditScreenshot"
+  | "feedbackForm.AddVideoClip"
+  | "feedbackForm.PreviewVideoClip"
+  | "feedbackForm.Consent.Label"
+  | "feedbackForm.Consent.TosUrl"
+  | "feedbackForm.Consent.TosLabel"
+  | "feedbackForm.AttachmentsLabel"
+  | "feedbackForm.Attachments.DropFilesLabel"
+  | "feedbackForm.Attachments.OrBrowseLabel"
+  | "feedbackForm.Attachments.BrowseLabel"
+  | "feedbackForm.Attachments.MaxFilesError"
+  | "feedbackForm.Attachments.FileSizeError"
+  | "feedbackForm.Attachments.FileTypeError"
+  | "feedbackForm.MaxLengthError"
+  | "feedbackForm.BeforeUnload"
+  | "screenRecorder.Start"
+  | "screenRecorder.Stop"
+  | "screenRecorder.Audio.Mute"
+  | "screenRecorder.Audio.Unmute"
+  | "screenRecorder.Audio.NotSupported"
+  | "videoPreview.RecordAgain"
+  | "videoPreview.Done"
+  | "highlighter.Cancel"
+  | "highlighter.Undo"
+  | "highlighter.tools.Pencil"
+  | "highlighter.tools.Interact"
+  | "highlighter.tools.Arrow"
+  | "highlighter.tools.Rectangle"
+  | "highlighter.tools.ColorPicker"
+  | "highlighter.tools.Obfuscate"
+  | "highlighter.tools.Text"
+  | "highlighter.tools.Text.Placeholder"
+  | "highlighter.tools.Text.Save"
+  | "highlighter.Done"
+  | "thankYouModal.Heading"
+  | "thankYouModal.Text"
+  | "thankYouModal.Button"
+  | "processingModal.Heading"
+  | "privacyTour.Title"
+  | "privacyTour.Ok"
+  | "privacyTour.Obfuscate";
+
 type SetUserType = {
   id: string;
   name: string;
@@ -32,11 +107,17 @@ type YbugSettings = {
   skip_to?: 'feedback';
   hide_launcher?: boolean;
   console_log?: boolean;
-  launcherButton?: {
-    title?: string;
-  };
+  /**
+   * @deprecated Use `translate: { "launcherButton.Title": "Report a problem" }` property instead.
+   */
+  launcherButton?: never;
   translate?: {
-    [key: string]: string;
+    [key in YbugTranslationKey | string]?: string;
+  };
+  translations?: {
+    [languageCode: string]: {
+      [key in YbugTranslationKey | string]?: string;
+    };
   };
   rating?: boolean; // Rating is disabled by default
   rating_required?: boolean;
@@ -142,5 +223,5 @@ function YbugProvider({ ybugId, url, children, settings }: YbugProviderProps): J
   return <YbugContext.Provider value={{ Ybug: ybugApi, init: initYbug }}>{children}</YbugContext.Provider>;
 }
 
-export type { YbugApi, YbugSettings, SetUserType, YbugContextType, YbugProviderProps };
+export type { YbugApi, YbugSettings, SetUserType, YbugContextType, YbugProviderProps, YbugTranslationKey };
 export { useYbugApi, YbugProvider };
