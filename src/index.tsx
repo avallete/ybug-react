@@ -80,7 +80,8 @@ type SetUserType = {
   name: string;
   email: string;
   phone?: string | null | undefined;
-} & { [key: string]: string | null | undefined };
+  [key: string]: string | null | undefined;
+};
 
 type YbugApi = {
   boot: () => void;
@@ -92,7 +93,6 @@ type YbugApi = {
 };
 
 type YbugSettings = {
-  id: string;
   feedback?: {
     comment?: string;
     rating?: number;
@@ -112,11 +112,11 @@ type YbugSettings = {
    */
   launcherButton?: never;
   translate?: {
-    [key in YbugTranslationKey | string]?: string;
+    [key in YbugTranslationKey]?: string;
   };
   translations?: {
     [languageCode: string]: {
-      [key in YbugTranslationKey | string]?: string;
+      [key in YbugTranslationKey]?: string;
     };
   };
   rating?: boolean; // Rating is disabled by default
@@ -161,7 +161,7 @@ type YbugProviderProps = {
   */
   url?: string;
   children: React.ReactNode;
-  settings?: YbugSettings & { [key: string]: string };
+  settings?: YbugSettings;
 };
 
 const YbugContext = React.createContext<YbugContextType | null>(null);
